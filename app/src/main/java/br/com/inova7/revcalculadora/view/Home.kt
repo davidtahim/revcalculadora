@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -41,6 +42,7 @@ import br.com.inova7.revcalculadora.ui.theme.White
 fun Home(){
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
+    var resultMessage by remember { mutableStateOf("IMC: 24.1 \n Peso Normal") }
     var textFieldError by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
@@ -152,6 +154,15 @@ Alignment.CenterVertically
                     fontWeight = FontWeight.Bold)
 
             }
+
+            Text(
+                text = resultMessage,
+                fontSize = 18.sp,
+                color = Blue,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth().padding(10.dp)
+            )
 
         }
 
