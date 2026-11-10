@@ -12,6 +12,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -28,12 +30,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.inova7.revcalculadora.ui.theme.Blue
+import br.com.inova7.revcalculadora.ui.theme.Red
 import br.com.inova7.revcalculadora.ui.theme.White
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Home(){
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
+    var textFieldError by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -90,8 +94,43 @@ Alignment.CenterVertically
                     modifier = Modifier.fillMaxWidth(0.4f).padding(20.dp,0.dp,0.dp,20.dp),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Number
-                    )
+                    ),
+                    colors = TextFieldDefaults.colors(
+                        unfocusedTextColor = White,
+                        focusedContainerColor = White,
+                        errorContainerColor = White,
+                        focusedLabelColor = Blue,
+                        focusedIndicatorColor = Blue,
+                        cursorColor = Blue,
+                        errorIndicatorColor = Red
+                    ),
+                    isError = textFieldError
                 )
+
+                OutlinedTextField(
+                    value = weight,
+                    onValueChange = {
+                        weight = it
+                    },
+                    label = {
+                        Text(text = "Ex: 70.50")
+                    },
+                    modifier = Modifier.fillMaxWidth(0.7f).padding(20.dp,0.dp,20.dp,20.dp),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Decimal
+                    ),
+                    colors = TextFieldDefaults.colors(
+                        unfocusedTextColor = White,
+                        focusedContainerColor = White,
+                        errorContainerColor = White,
+                        focusedLabelColor = Blue,
+                        focusedIndicatorColor = Blue,
+                        cursorColor = Blue,
+                        errorIndicatorColor = Red
+                    ),
+                    isError = textFieldError
+                )
+
             }
         }
 
