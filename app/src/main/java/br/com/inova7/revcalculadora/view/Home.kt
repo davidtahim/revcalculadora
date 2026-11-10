@@ -1,0 +1,79 @@
+package br.com.inova7.revcalculadora.view
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import br.com.inova7.revcalculadora.ui.theme.Blue
+import br.com.inova7.revcalculadora.ui.theme.White
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun Home(){
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = "Calculadora de IMC")
+                },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = Blue,
+                titleContentColor = White
+            )
+
+
+            )
+
+        }) {paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .background(color=White)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+Arrangement.SpaceBetween,
+Alignment.CenterVertically
+            ) {
+                Text(
+                    text="Altura em CM",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(20.dp,100.dp,0.dp,0.dp)
+                )
+                Text(
+                    text="Peso em KG",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(20.dp,100.dp,0.dp,0.dp)
+                )
+            }
+        }
+
+    }
+
+}
+
+
+@Preview
+@Composable
+private fun HomePreview (){
+    Home()
+}
